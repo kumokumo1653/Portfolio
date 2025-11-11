@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+export interface Props {
+    title?: string;
+}
+
+const { title = "Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="BokeRinGo's Portfolio - 創造性と技術を融合させた作品集"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon設定 -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <!-- メタタグの追加 -->
+        <meta name="author" content="BokeRinGo" />
+        <meta name="theme-color" content="#FFDAD5" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta
+            property="og:description"
+            content="BokeRinGo's Portfolio - 創造性と技術を融合させた作品集"
+        />
+        <meta property="og:image" content="/favicon.png" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={title} />
+        <meta
+            property="twitter:description"
+            content="BokeRinGo's Portfolio - 創造性と技術を融合させた作品集"
+        />
+        <meta property="twitter:image" content="/favicon.png" />
+
+        <title>{title}</title>
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>

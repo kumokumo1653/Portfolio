@@ -1,0 +1,611 @@
+---
+import Layout from "../layouts/Layout.astro";
+import logo from "../assets/Bokeringo.png";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const products = await getCollection("products");
+---
+
+<Layout title="BokeRinGo's Portfolio">
+    <!-- ヘッダーナビゲーション -->
+    <header
+        class="fixed top-0 left-0 right-0 z-40 bg-white bg-opacity-95 backdrop-blur-sm border-b border-primary-20 shadow-sm"
+    >
+        <nav class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <Image src={logo} alt="BokeRinGo Logo" class="w-10 h-10" />
+                    <span class="font-bold text-xl text-tertiary-20"
+                        >BokeRinGo</span
+                    >
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a
+                        href="#home"
+                        class="nav-link text-tertiary-30 hover:text-tertiary-50 transition-colors font-medium"
+                    >
+                        Home
+                    </a>
+                    <a
+                        href="#about"
+                        class="nav-link text-tertiary-30 hover:text-tertiary-50 transition-colors font-medium"
+                    >
+                        About
+                    </a>
+                    <a
+                        href="#products"
+                        class="nav-link text-tertiary-30 hover:text-tertiary-50 transition-colors font-medium"
+                    >
+                        Products
+                    </a>
+                    {
+                        products
+                            .filter((p) => p.data.detail)
+                            .map((p) => (
+                                <a
+                                    href={`#product-${p.id}`}
+                                    class="nav-link text-tertiary-30 hover:text-tertiary-50 transition-colors font-medium"
+                                >
+                                    {p.data.name}
+                                </a>
+                            ))
+                    }
+                </div>
+                <!-- モバイルメニューボタン -->
+                <button
+                    id="mobileMenuBtn"
+                    class="md:hidden p-2 text-tertiary-30 hover:text-tertiary-50"
+                >
+                    <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- モバイルメニュー -->
+            <div
+                id="mobileMenu"
+                class="md:hidden mt-4 pb-4 border-t border-primary-20 hidden"
+            >
+                <div class="flex flex-col gap-4 pt-4">
+                    <a
+                        href="#home"
+                        class="nav-link text-tertiary-30 hover:text-tertiary-50 transition-colors font-medium"
+                    >
+                        Home
+                    </a>
+                    <a
+                        href="#about"
+                        class="nav-link text-tertiary-30 hover:text-tertiary-50 transition-colors font-medium"
+                    >
+                        About
+                    </a>
+                    <a
+                        href="#products"
+                        class="nav-link text-tertiary-30 hover:text-tertiary-50 transition-colors font-medium"
+                    >
+                        Products
+                    </a>
+                    {
+                        products
+                            .filter((p) => p.data.detail)
+                            .map((p) => (
+                                <a
+                                    href={`#product-${p.id}`}
+                                    class="nav-link text-tertiary-30 hover:text-tertiary-50 transition-colors font-medium"
+                                >
+                                    {p.data.name}
+                                </a>
+                            ))
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section
+        id="home"
+        class="min-h-screen min-w-full flex flex-row justify-center items-center bg-primary-80 pt-20 px-4"
+    >
+        <div
+            class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 max-w-6xl"
+        >
+            <Image
+                src={logo}
+                alt="BokeRinGo Logo"
+                class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 shrink-0"
+            />
+            <div class="text-center lg:text-left">
+                <h1
+                    class="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-10 leading-tight"
+                >
+                    Welcome to<br class="sm:hidden" />
+                    <span class="block sm:inline"> BokeRinGo's Portfolio!</span>
+                </h1>
+                <p
+                    class="mt-4 text-lg sm:text-xl text-primary-20 max-w-md mx-auto lg:mx-0"
+                >
+                    創造性と技術を融合させた作品をご紹介します
+                </p>
+            </div>
+        </div>
+    </section>
+    <section
+        id="about"
+        class="min-h-screen min-w-full flex flex-row justify-center items-center bg-primary-70"
+    >
+        <div class="flex flex-col">
+            <h1 class="text-5xl font-bold text-center text-primary-10">
+                About this site
+            </h1>
+            <p class="text-center text-primary-20 mt-8 text-lg">
+                このサイトはBokeRinGoのポートフォリオサイトです。<br />
+                制作物やスキルセットを紹介しています。
+            </p>
+        </div>
+    </section>
+    <section
+        id="products"
+        class="min-h-screen min-w-full flex flex-row justify-center items-center bg-primary-90"
+    >
+        <div class="flex flex-col">
+            <h1 class="text-5xl font-bold text-center text-primary-10">
+                Products
+            </h1>
+            <p class="text-center text-primary-20 mt-8 text-lg">
+                作成した作品やプロジェクトの一覧を掲載しています。
+            </p>
+            {
+                products.map((p) => (
+                    <div class="mt-6 p-4 border border-primary-40 rounded-lg bg-primary-95 shadow-sm flex flex-row items-center gap-6">
+                        <div class="flex flex-col flex-1">
+                            <h2 class="text-2xl font-semibold text-primary-20">
+                                {p.data.name}
+                            </h2>
+                            <p class="text-primary-30 mt-2">
+                                {p.data.description}
+                            </p>
+                            {p.data.link && (
+                                <a
+                                    href={p.data.link}
+                                    class="text-primary-50 hover:text-primary-40 mt-2 block font-medium transition-colors"
+                                >
+                                    使ってみる →
+                                </a>
+                            )}
+                        </div>
+                        {p.data.image && (
+                            <div class="shrink-0">
+                                <Image
+                                    src={p.data.image}
+                                    alt={`${p.data.name}`}
+                                    class="w-48 h-32 object-contain rounded-lg bg-primary-100"
+                                />
+                            </div>
+                        )}
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    {
+        products.map(
+            (p, index) =>
+                p.data.detail && (
+                    <section
+                        id={`product-${p.id}`}
+                        class="min-h-screen min-w-full flex flex-col justify-center items-center px-8 py-16"
+                        style={
+                            p.data.detail.backgroundColor
+                                ? `background: linear-gradient(135deg, ${p.data.detail.backgroundColor.primary}, ${p.data.detail.backgroundColor.secondary})`
+                                : `background: var(--color-primary-${80 + index * 5})`
+                        }
+                    >
+                        <div class="max-w-6xl w-full">
+                            {/* プロダクト名 */}
+                            <h1 class="text-6xl font-bold text-center text-primary-10 mb-8">
+                                {p.data.name}
+                            </h1>
+
+                            {/* 詳細説明 */}
+                            <div class="bg-primary-95 rounded-xl p-8 mb-12 shadow-lg">
+                                <h2 class="text-3xl font-semibold text-primary-20 mb-4">
+                                    概要
+                                </h2>
+                                <p class="text-primary-30 text-lg leading-relaxed">
+                                    {p.data.detail.fullDescription}
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                {/* スクリーンショット */}
+                                <div class="bg-primary-95 rounded-xl p-6 shadow-lg">
+                                    <h3 class="text-2xl font-semibold text-primary-20 mb-4">
+                                        スクリーンショット
+                                    </h3>
+                                    <div class="grid grid-cols-1 gap-4">
+                                        {p.data.detail.screenshots.map(
+                                            (screenshot, screenshotIndex) => (
+                                                <div
+                                                    class="w-full h-48 cursor-pointer hover:shadow-lg transition-shadow rounded-lg overflow-hidden screenshot-container"
+                                                    data-product-id={p.id}
+                                                    data-screenshot-index={
+                                                        screenshotIndex
+                                                    }
+                                                >
+                                                    <Image
+                                                        src={screenshot}
+                                                        alt={`${p.data.name}のスクリーンショット`}
+                                                        class="w-full h-full object-contain bg-white border border-primary-20 rounded-lg"
+                                                    />
+                                                </div>
+                                            ),
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* 機能一覧 */}
+                                <div class="bg-primary-95 rounded-xl p-6 shadow-lg">
+                                    <h3 class="text-2xl font-semibold text-primary-20 mb-4">
+                                        主な機能
+                                    </h3>
+                                    <ul class="space-y-2">
+                                        {p.data.detail.features.map(
+                                            (feature) => (
+                                                <li class="text-primary-30 flex items-center">
+                                                    <span class="text-primary-50 mr-2">
+                                                        ✓
+                                                    </span>
+                                                    {feature}
+                                                </li>
+                                            ),
+                                        )}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+                                {/* 技術スタック */}
+                                <div class="bg-primary-95 rounded-xl p-6 shadow-lg">
+                                    <h3 class="text-xl font-semibold text-primary-20 mb-4">
+                                        技術スタック
+                                    </h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        {p.data.detail.technologies.map(
+                                            (tech) => (
+                                                <span class="bg-primary-80 text-primary-20 px-3 py-1 rounded-full text-sm font-medium">
+                                                    {tech}
+                                                </span>
+                                            ),
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* リンク */}
+                            {p.data.link && (
+                                <div class="text-center mt-12">
+                                    <a
+                                        href={p.data.link}
+                                        class="inline-block bg-primary-50 hover:bg-primary-40 text-white px-8 py-3 rounded-lg font-medium text-lg transition-colors shadow-lg"
+                                    >
+                                        {p.data.name}を使ってみる →
+                                    </a>
+                                </div>
+                            )}
+                        </div>
+                    </section>
+                ),
+        )
+    }
+
+    <!-- スタイル定義 -->
+    <style>
+        /* スムーズスクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ナビゲーションのスタイル */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-1px);
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-tertiary-50);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.font-bold::after {
+            width: 100%;
+        }
+
+        /* モーダルアニメーション */
+        #imageModal {
+            backdrop-filter: blur(4px);
+            transition:
+                opacity 300ms ease-in-out,
+                backdrop-filter 300ms ease-in-out,
+                background-color 300ms ease-in-out;
+        }
+
+        #modalContent {
+            transition:
+                transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 300ms ease-in-out;
+        }
+
+        .modal-enter {
+            opacity: 1 !important;
+            background-color: rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .modal-enter #modalContent {
+            transform: scale(1) !important;
+            opacity: 1 !important;
+        }
+
+        .modal-exit {
+            opacity: 0 !important;
+            background-color: rgba(0, 0, 0, 0) !important;
+        }
+
+        .modal-exit #modalContent {
+            transform: scale(0.75) !important;
+            opacity: 0 !important;
+        }
+    </style>
+
+    <!-- 画像拡大モーダル -->
+    <div
+        id="imageModal"
+        class="fixed inset-0 bg-black items-center justify-center z-50 opacity-0 pointer-events-none"
+        style="display: none; background-color: rgba(0, 0, 0, 0);"
+    >
+        <div
+            id="modalContent"
+            class="relative max-w-[90vw] max-h-[90vh] p-4"
+            style="transform: scale(0.75); opacity: 0;"
+        >
+            <button
+                id="closeModalBtn"
+                class="absolute -top-2 -right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center text-black hover:bg-neutral-200 transition-colors z-10"
+            >
+                ✕
+            </button>
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+                class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+            />
+        </div>
+    </div>
+
+    <script define:vars={{ products }}>
+        function openModal(productId, screenshotIndex) {
+            console.log("openModal called with:", productId, screenshotIndex);
+            const modal = document.getElementById("imageModal");
+            const modalContent = document.getElementById("modalContent");
+            const modalImage = document.getElementById("modalImage");
+
+            console.log("modal:", modal, "modalImage:", modalImage);
+            console.log("products:", products);
+
+            // productsデータから該当する画像を見つける
+            const product = products.find((p) => p.id === productId);
+            console.log("found product:", product);
+
+            if (
+                modal &&
+                modalContent &&
+                modalImage &&
+                product &&
+                product.data.detail
+            ) {
+                const screenshot =
+                    product.data.detail.screenshots[screenshotIndex];
+                console.log("screenshot:", screenshot);
+
+                if (screenshot) {
+                    modalImage.src = screenshot.src;
+                    modalImage.alt = `${product.data.name}のスクリーンショット`;
+
+                    // モーダルを表示してアニメーション開始
+                    modal.style.display = "flex";
+                    modal.classList.remove("pointer-events-none");
+
+                    // 次のフレームでアニメーションを実行（DOM更新後）
+                    requestAnimationFrame(() => {
+                        modal.classList.remove("modal-exit");
+                        modal.classList.add("modal-enter");
+                    });
+
+                    // ESCキーでモーダルを閉じる
+                    document.addEventListener("keydown", handleEscKey);
+                    // 背景クリックでモーダルを閉じる
+                    modal.addEventListener("click", handleBackgroundClick);
+                    // body のスクロールを無効化
+                    document.body.style.overflow = "hidden";
+                }
+            } else {
+                console.log("Missing elements or data:", {
+                    modal: !!modal,
+                    modalImage: !!modalImage,
+                    product: !!product,
+                    hasDetail: !!(product && product.data.detail),
+                });
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            const modalContent = document.getElementById("modalContent");
+
+            if (modal && modalContent) {
+                // フェードアウトアニメーション開始
+                modal.classList.remove("modal-enter");
+                modal.classList.add("modal-exit");
+
+                // アニメーション完了後にモーダルを非表示
+                setTimeout(() => {
+                    modal.style.display = "none";
+                    modal.classList.add("pointer-events-none");
+                    modal.classList.remove("modal-exit");
+                }, 300); // CSS transitionの時間と一致させる
+
+                // イベントリスナーを削除
+                document.removeEventListener("keydown", handleEscKey);
+                modal.removeEventListener("click", handleBackgroundClick);
+                // body のスクロールを復活
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        function handleEscKey(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        }
+
+        function handleBackgroundClick(event) {
+            if (event.target === event.currentTarget) {
+                closeModal();
+            }
+        }
+
+        // DOMContentLoadedイベントでイベントリスナーを設定
+        document.addEventListener("DOMContentLoaded", function () {
+            // スクリーンショットのクリックイベント
+            const screenshotContainers = document.querySelectorAll(
+                ".screenshot-container",
+            );
+            screenshotContainers.forEach((container) => {
+                container.addEventListener("click", function () {
+                    const productId = this.getAttribute("data-product-id");
+                    const screenshotIndex = parseInt(
+                        this.getAttribute("data-screenshot-index"),
+                    );
+                    openModal(productId, screenshotIndex);
+                });
+            });
+
+            // 閉じるボタンのクリックイベント
+            const closeBtn = document.getElementById("closeModalBtn");
+            if (closeBtn) {
+                closeBtn.addEventListener("click", closeModal);
+            }
+
+            // モーダルの初期化
+            const modal = document.getElementById("imageModal");
+            if (modal) {
+                modal.style.display = "none";
+                modal.classList.add("pointer-events-none");
+                modal.classList.remove("modal-enter", "modal-exit");
+            }
+
+            // ナビゲーション機能
+            // モバイルメニューのトグル
+            const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+            const mobileMenu = document.getElementById("mobileMenu");
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener("click", function () {
+                    mobileMenu.classList.toggle("hidden");
+                });
+            }
+
+            // スムーズスクロール
+            const navLinks = document.querySelectorAll(".nav-link");
+            navLinks.forEach((link) => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute("href").substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        const headerHeight = 80; // ヘッダーの高さ
+                        const targetPosition =
+                            targetElement.offsetTop - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: "smooth",
+                        });
+
+                        // モバイルメニューを閉じる
+                        if (mobileMenu) {
+                            mobileMenu.classList.add("hidden");
+                        }
+                    }
+                });
+            });
+
+            // アクティブなナビゲーションリンクのハイライト
+            function updateActiveNav() {
+                const sections = document.querySelectorAll("section[id]");
+                const scrollPosition = window.scrollY + 100;
+
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute("id");
+
+                    if (
+                        scrollPosition >= sectionTop &&
+                        scrollPosition < sectionTop + sectionHeight
+                    ) {
+                        // 全てのナビリンクから active クラスを削除
+                        navLinks.forEach((link) => {
+                            link.classList.remove(
+                                "text-tertiary-50",
+                                "font-bold",
+                            );
+                            link.classList.add("text-tertiary-30");
+                        });
+
+                        // 対応するナビリンクに active クラスを追加
+                        const activeLink = document.querySelector(
+                            `a[href="#${sectionId}"]`,
+                        );
+                        if (activeLink) {
+                            activeLink.classList.remove("text-tertiary-30");
+                            activeLink.classList.add(
+                                "text-tertiary-50",
+                                "font-bold",
+                            );
+                        }
+                    }
+                });
+            }
+
+            // スクロール時にアクティブナビを更新
+            window.addEventListener("scroll", updateActiveNav);
+            // 初回実行
+            updateActiveNav();
+        });
+    </script>
+</Layout>

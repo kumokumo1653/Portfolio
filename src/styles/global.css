@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Tailwind CSS v4 @theme ディレクティブを使用したMaterial Design 3カラーパレット */
+@theme {
+    --color-primary-0: #000000;
+    --color-primary-5: #2D0000;
+    --color-primary-10: #410000;
+    --color-primary-15: #500905;
+    --color-primary-20: #5F140D;
+    --color-primary-25: #6E2017;
+    --color-primary-30: #7E2B21;
+    --color-primary-35: #8D362B;
+    --color-primary-40: #9D4236;
+    --color-primary-50: #BC594C;
+    --color-primary-60: #DC7263;
+    --color-primary-70: #FC8B7C;
+    --color-primary-80: #FFB4A9;
+    --color-primary-90: #FFDAD5;
+    --color-primary-95: #FFEDEA;
+    --color-primary-98: #FFF8F7;
+    --color-primary-99: #FFFBFF;
+    --color-primary-100: #FFFFFF;
+
+    --color-secondary-0: #000000;
+    --color-secondary-5: #200B00;
+    --color-secondary-10: #301400;
+    --color-secondary-15: #3F1D02;
+    --color-secondary-20: #4C2709;
+    --color-secondary-25: #593214;
+    --color-secondary-30: #663D1E;
+    --color-secondary-35: #744828;
+    --color-secondary-40: #825433;
+    --color-secondary-50: #9E6C49;
+    --color-secondary-60: #BB8560;
+    --color-secondary-70: #D89F78;
+    --color-secondary-80: #F6BA91;
+    --color-secondary-90: #FFDCC6;
+    --color-secondary-95: #FFEDE4;
+    --color-secondary-98: #FFF8F5;
+    --color-secondary-99: #FFFBFF;
+    --color-secondary-100: #FFFFFF;
+
+
+    --color-tertiary-0: #000000;
+    --color-tertiary-5: #031501;
+    --color-tertiary-10: #0C2007;
+    --color-tertiary-15: #162B11;
+    --color-tertiary-20: #20361A;
+    --color-tertiary-25: #2B4124;
+    --color-tertiary-30: #364D2F;
+    --color-tertiary-35: #42583A;
+    --color-tertiary-40: #4D6545;
+    --color-tertiary-50: #667E5C;
+    --color-tertiary-60: #7F9874;
+    --color-tertiary-70: #99B38D;
+    --color-tertiary-80: #B4CEA7;
+    --color-tertiary-90: #D0EAC2;
+    --color-tertiary-95: #DEF9D0;
+    --color-tertiary-98: #EDFFE1;
+    --color-tertiary-99: #F7FFEE;
+    --color-tertiary-100: #FFFFFF;
+
+    --color-neutral-50: #F5F0ED;
+    --color-neutral-100: #FEF8F6;
+    --color-neutral-200: #E7E1DF;
+    --color-neutral-300: #CAC5C3;
+    --color-neutral-400: #AFAAA8;
+    --color-neutral-500: #7A7674;
+    --color-neutral-600: #615E5C;
+    --color-neutral-700: #555250;
+    --color-neutral-800: #494645;
+    --color-neutral-900: #32302F;
+    --color-neutral-950: #1D1B1A;
+
+    --color-surface-light: #FFF8F4;
+    --color-surface-dark: #18120C;
+}

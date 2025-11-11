@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../.astro/collections/products.schema.json",
+    "name": "Idea Maker",
+    "description": "アイディアメーカーはマインドマップをベースにアイディアを形にするお手伝いをするサービスです。",
+    "link": "https://ideamaker.bokeringo.com/",
+    "image": "./ideaMaker.png",
+    "detail": {
+        "fullDescription": "アイディアメーカーはマインドマップをベースにアイディアを形にするお手伝いをするサービスです。AIの力を使いながらフラッシュアイディアを具体的なプランを持たせましょう。マインドマップは保存することが可能で、あとから編集や共有も簡単に行えます。",
+        "screenshots": ["./ideaMaker_screen.png"],
+        "features": [
+            "直感的なマインドマップエディター",
+            "AIアシスタントによるアイディア補完",
+            "マインドマップ保存機能"
+        ],
+        "technologies": [
+            "Flutter",
+            "Dart",
+            "Firebase Authentication",
+            "Firebase Firestore",
+            "Firebase AI Logic"
+        ],
+        "backgroundColor": {
+            "primary": "#F6BA91",
+            "secondary": "#FFDCC6"
+        }
+    }
+}

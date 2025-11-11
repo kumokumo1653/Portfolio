@@ -1,0 +1,22 @@
+{
+    "name": "BokeRinGo's Portfolio",
+    "short_name": "BokeRinGo",
+    "description": "BokeRinGo's Portfolio - 創造性と技術を融合させた作品集",
+    "icons": [
+        {
+            "src": "/favicon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#FFDAD5",
+    "background_color": "#FFF8F7",
+    "display": "standalone",
+    "start_url": "/",
+    "scope": "/"
+}

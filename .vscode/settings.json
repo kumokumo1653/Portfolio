@@ -1,0 +1,21 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "tailwindCSS.includeLanguages": {
+        "astro": "html"
+    },
+    "tailwindCSS.experimental.configFile": "src/styles/global.css",
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+        "class:list"
+    ],
+    "emmet.includeLanguages": {
+        "astro": "html"
+    },
+    "files.associations": {
+        "*.astro": "astro"
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+}
