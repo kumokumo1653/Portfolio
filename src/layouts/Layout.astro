@@ -9,8 +9,8 @@ const { title = "Portfolio" } = Astro.props;
 const getAssetPath = (path: string) => {
     const base = import.meta.env.BASE_URL;
     // 既存のスラッシュを削除して再構築
-    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base;
+    const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+    const cleanBase = base.endsWith("/") ? base.slice(0, -1) : base;
     return `${cleanBase}/${cleanPath}`;
 };
 ---
@@ -26,11 +26,19 @@ const getAssetPath = (path: string) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <!-- Favicon設定 -->
-        <link rel="icon" href={getAssetPath('favicon.ico')} type="image/x-icon" />
-        <link rel="icon" href={getAssetPath('favicon.png?v=1')} type="image/png" />
-        <link rel="shortcut icon" href={getAssetPath('favicon.ico')} />
-        <link rel="apple-touch-icon" href={getAssetPath('favicon.png?v=1')} />
-        <link rel="manifest" href={getAssetPath('site.webmanifest')} />
+        <link
+            rel="icon"
+            href={getAssetPath("favicon.ico")}
+            type="image/x-icon"
+        />
+        <link
+            rel="icon"
+            href={getAssetPath("favicon.png?v=1")}
+            type="image/png"
+        />
+        <link rel="shortcut icon" href={getAssetPath("favicon.ico")} />
+        <link rel="apple-touch-icon" href={getAssetPath("favicon.png?v=1")} />
+        <link rel="manifest" href={getAssetPath("site.webmanifest")} />
 
         <!-- メタタグの追加 -->
         <meta name="author" content="BokeRinGo" />
@@ -43,7 +51,7 @@ const getAssetPath = (path: string) => {
             property="og:description"
             content="BokeRinGo's Portfolio - 創造性と技術を融合させた作品集"
         />
-        <meta property="og:image" content={getAssetPath('favicon.png')} />
+        <meta property="og:image" content={getAssetPath("favicon.png")} />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
@@ -52,7 +60,7 @@ const getAssetPath = (path: string) => {
             property="twitter:description"
             content="BokeRinGo's Portfolio - 創造性と技術を融合させた作品集"
         />
-        <meta property="twitter:image" content={getAssetPath('favicon.png')} />
+        <meta property="twitter:image" content={getAssetPath("favicon.png")} />
 
         <title>{title}</title>
     </head>
