@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kumokumo1653.github.io',
+  site: 'https://www.bokeringo.com',
   base: '/Portfolio',
   trailingSlash: "always",
   vite: {
